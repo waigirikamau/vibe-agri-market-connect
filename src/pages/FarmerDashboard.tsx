@@ -14,12 +14,12 @@ const FarmerDashboard = () => {
   const navigate = useNavigate();
 
   const farmerData = {
-    name: "John Doe",
+    name: "Kelvin Kamau",
     county: "Kiambu",
     location: "Kiambu Town",
     acres: "5",
-    phone: "0712345678",
-    crops: ["Maize", "Beans", "Potatoes"],
+    phone: "0711122233",
+    crops: ["Maize", "Beans", "Potatoes", "Tomatoes", "Cabbages", "Carrots", "Onions", "Kale", "Spinach", "Cucumber", "Mangoes", "Avocados", "Bananas", "Peas", "Green Grams", "Pineapples", "Watermelons", "Sweet Potatoes"],
     verified: true
   };
 

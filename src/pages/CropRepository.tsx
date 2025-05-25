@@ -18,8 +18,8 @@ const CropRepository = () => {
     { name: "All Categories", crops: [] },
     { name: "Cereals", crops: ["Maize", "Wheat", "Rice", "Barley", "Sorghum", "Millet"] },
     { name: "Legumes", crops: ["Beans", "Peas", "Lentils", "Chickpeas", "Cowpeas", "Green Grams"] },
-    { name: "Vegetables", crops: ["Tomatoes", "Onions", "Cabbages", "Kale", "Spinach", "Carrots", "Cucumber", "Bell Peppers", "Broccoli"] },
-    { name: "Fruits", crops: ["Bananas", "Mangoes", "Avocados", "Oranges", "Apples", "Pineapples", "Watermelons", "Passion Fruits"] },
+    { name: "Vegetables", crops: ["Tomatoes", "Onions", "Cabbages", "Kale", "Spinach", "Carrots", "Cucumber", "Bell Peppers", "Broccoli", "Cauliflower", "Lettuce"] },
+    { name: "Fruits", crops: ["Bananas", "Mangoes", "Avocados", "Oranges", "Apples", "Pineapples", "Watermelons", "Passion Fruits", "Pawpaw", "Grapes"] },
     { name: "Root Tubers", crops: ["Potatoes", "Sweet Potatoes", "Cassava", "Yams", "Arrow Roots"] },
     { name: "Cash Crops", crops: ["Coffee", "Tea", "Cotton", "Pyrethrum", "Tobacco", "Sugarcane"] }
   ];
@@ -50,7 +50,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.9,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300"
+          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
         },
         {
           id: 2,
@@ -63,7 +63,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.7,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300"
+          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -82,7 +82,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.8,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300"
+          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
         },
         {
           id: 4,
@@ -95,7 +95,7 @@ const CropRepository = () => {
           verified: false,
           rating: 4.6,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300"
+          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -105,7 +105,7 @@ const CropRepository = () => {
       farmers: [
         {
           id: 5,
-          name: "Peter Mwangi",
+          name: "Peter Kamau",
           county: "Meru",
           location: "Maua",
           quantity: "300 kg",
@@ -114,7 +114,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.5,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1546470427-e5e6c0e8fb30?w=300"
+          image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -133,7 +133,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.8,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1432839737174-5b43eeba3195?w=300"
+          image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -152,7 +152,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.7,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300"
+          image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -171,7 +171,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.9,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300"
+          image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -190,7 +190,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.6,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=300"
+          image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -209,7 +209,140 @@ const CropRepository = () => {
           verified: true,
           rating: 4.4,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300"
+          image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Mangoes",
+      category: "Fruits",
+      farmers: [
+        {
+          id: 11,
+          name: "John Mwangi",
+          county: "Machakos",
+          location: "Wamunyu",
+          quantity: "300 kg",
+          pricePerKg: 120,
+          status: "ready",
+          verified: true,
+          rating: 4.7,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Cucumber",
+      category: "Vegetables",
+      farmers: [
+        {
+          id: 12,
+          name: "Faith Wanjiku",
+          county: "Nyeri",
+          location: "Karatina",
+          quantity: "200 kg",
+          pricePerKg: 40,
+          status: "ready",
+          verified: true,
+          rating: 4.5,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Peas",
+      category: "Legumes",
+      farmers: [
+        {
+          id: 13,
+          name: "Michael Kiprop",
+          county: "Kericho",
+          location: "Londiani",
+          quantity: "150 kg",
+          pricePerKg: 100,
+          status: "ready",
+          verified: true,
+          rating: 4.8,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Green Grams",
+      category: "Legumes",
+      farmers: [
+        {
+          id: 14,
+          name: "Catherine Adhiambo",
+          county: "Homa Bay",
+          location: "Ndhiwa",
+          quantity: "100 kg",
+          pricePerKg: 140,
+          status: "ready",
+          verified: true,
+          rating: 4.6,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Pineapples",
+      category: "Fruits",
+      farmers: [
+        {
+          id: 15,
+          name: "Robert Kibet",
+          county: "Bomet",
+          location: "Sotik",
+          quantity: "50 pieces",
+          pricePerKg: 200,
+          status: "ready",
+          verified: true,
+          rating: 4.9,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Watermelons",
+      category: "Fruits",
+      farmers: [
+        {
+          id: 16,
+          name: "Lucy Wambui",
+          county: "Makueni",
+          location: "Wote",
+          quantity: "20 pieces",
+          pricePerKg: 25,
+          status: "ready",
+          verified: true,
+          rating: 4.4,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Sweet Potatoes",
+      category: "Root Tubers",
+      farmers: [
+        {
+          id: 17,
+          name: "Joseph Onyango",
+          county: "Siaya",
+          location: "Bondo",
+          quantity: "400 kg",
+          pricePerKg: 35,
+          status: "ready",
+          verified: true,
+          rating: 4.5,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
         }
       ]
     }

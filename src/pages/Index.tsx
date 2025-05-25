@@ -35,8 +35,8 @@ const Index = () => {
         <div className="container mx-auto px-4 py-16 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Connecting Farmers to 
-              <span className="text-green-400"> Better Markets</span>
+              Welcome to 
+              <span className="text-green-400"> Shamba Connect</span>
             </h2>
             <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
               Real-time price alerts, direct buyer connections, and AI-powered selling recommendations. 
@@ -47,7 +47,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
               <Button 
                 size="lg" 
-                className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
+                className="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold"
                 onClick={() => navigate('/farmer-auth')}
               >
                 <Sprout className="mr-2 h-5 w-5" />
@@ -55,8 +55,7 @@ const Index = () => {
               </Button>
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="w-full md:w-auto border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg"
+                className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold"
                 onClick={() => navigate('/buyer-browse')}
               >
                 <ShoppingCart className="mr-2 h-5 w-5" />
