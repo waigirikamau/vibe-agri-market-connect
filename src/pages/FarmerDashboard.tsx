@@ -33,6 +33,16 @@ const FarmerDashboard = () => {
     navigate("/");
   };
 
+  // Listen for custom tab switch events
+  useEffect(() => {
+    const handleTabSwitch = (event: CustomEvent) => {
+      setActiveTab(event.detail);
+    };
+
+    window.addEventListener('switchTab' as any, handleTabSwitch as any);
+    return () => window.removeEventListener('switchTab' as any, handleTabSwitch as any);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}

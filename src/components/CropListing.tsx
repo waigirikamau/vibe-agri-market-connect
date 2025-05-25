@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Edit, Eye, MessageCircle, TrendingUp, Phone, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface FarmerData {
   name: string;
@@ -55,7 +56,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 80,
       status: "growing",
       daysToHarvest: 45,
-      image: "https://images.unsplash.com/photo-1432839737174-5b43eeba3195?w=300",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300",
       bids: [],
       messages: 0
     },
@@ -93,6 +94,52 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300",
       bids: [],
       messages: 1
+    },
+    {
+      id: 7,
+      crop: "Sweet Potatoes",
+      quantity: "250 kg",
+      pricePerKg: 40,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=300",
+      bids: [],
+      messages: 0
+    },
+    {
+      id: 8,
+      crop: "Watermelons",
+      quantity: "100 pieces",
+      pricePerKg: 25,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300",
+      bids: [
+        { buyerName: "Fruit Vendors Ltd", amount: 30, timestamp: "3 hours ago" }
+      ],
+      messages: 1
+    },
+    {
+      id: 9,
+      crop: "Cucumbers",
+      quantity: "180 kg",
+      pricePerKg: 50,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=300",
+      bids: [],
+      messages: 0
+    },
+    {
+      id: 10,
+      crop: "Mangoes",
+      quantity: "200 pieces",
+      pricePerKg: 60,
+      status: "harvesting",
+      daysToHarvest: 7,
+      image: "https://images.unsplash.com/photo-1605711285791-0219e80e43a3?w=300",
+      bids: [],
+      messages: 2
     }
   ]);
 
@@ -114,17 +161,30 @@ const CropListing = ({ farmerData }: CropListingProps) => {
     }
   };
 
+  const handleEdit = (cropId: number) => {
+    toast.success(`Editing ${listings.find(l => l.id === cropId)?.crop} listing`);
+  };
+
+  const handleView = (cropId: number) => {
+    toast.info(`Viewing ${listings.find(l => l.id === cropId)?.crop} details`);
+  };
+
   const handleContact = (phone: string) => {
     window.open(`tel:${phone}`);
+    toast.success("Calling farmer...");
   };
 
-  const handleMessage = () => {
+  const handleMessage = (cropId: number) => {
+    toast.success(`Opening chat for ${listings.find(l => l.id === cropId)?.crop}`);
     // Navigate to messages tab in farmer dashboard
-    navigate("/farmer-dashboard");
+    setTimeout(() => {
+      const event = new CustomEvent('switchTab', { detail: 'messages' });
+      window.dispatchEvent(event);
+    }, 1000);
   };
 
-  const handleRate = () => {
-    alert("Rating functionality coming soon!");
+  const handleRate = (cropId: number) => {
+    toast.success(`Rating ${listings.find(l => l.id === cropId)?.crop} experience`);
   };
 
   return (
@@ -184,11 +244,21 @@ const CropListing = ({ farmerData }: CropListingProps) => {
               )}
 
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1"
+                  onClick={() => handleEdit(listing.id)}
+                >
                   <Edit className="h-4 w-4 mr-1" />
                   Edit
                 </Button>
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1"
+                  onClick={() => handleView(listing.id)}
+                >
                   <Eye className="h-4 w-4 mr-1" />
                   View
                 </Button>
@@ -200,21 +270,19 @@ const CropListing = ({ farmerData }: CropListingProps) => {
                 >
                   <Phone className="h-4 w-4" />
                 </Button>
-                {listing.messages > 0 && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={handleMessage}
-                    className="flex items-center gap-1"
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    {listing.messages}
-                  </Button>
-                )}
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  onClick={handleRate}
+                  onClick={() => handleMessage(listing.id)}
+                  className="flex items-center gap-1"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  {listing.messages > 0 && listing.messages}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => handleRate(listing.id)}
                   className="flex items-center gap-1"
                 >
                   <Star className="h-4 w-4" />

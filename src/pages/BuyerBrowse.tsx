@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Search, Filter, ShoppingCart, ArrowLeft, MessageCircle, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const BuyerBrowse = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,14 +20,14 @@ const BuyerBrowse = () => {
   ];
 
   const counties = [
-    "All Counties", "Nairobi", "Kiambu", "Nakuru", "Meru", "Kakamega", "Machakos", "Nyeri"
+    "All Counties", "Nairobi", "Kiambu", "Nakuru", "Meru", "Kakamega", "Machakos", "Nyeri", "Murang'a", "Kisumu", "Eldoret", "Thika", "Mombasa", "Kitale", "Garissa", "Isiolo"
   ];
 
   const listings = [
     {
       id: 1,
       farmer: {
-        name: "John Doe",
+        name: "Kelvin Kamau",
         county: "Kiambu",
         location: "Kiambu Town",
         verified: true,
@@ -64,7 +65,7 @@ const BuyerBrowse = () => {
     {
       id: 3,
       farmer: {
-        name: "Peter Kamau",
+        name: "Peter Mwangi",
         county: "Meru",
         location: "Maua",
         verified: false,
@@ -79,6 +80,101 @@ const BuyerBrowse = () => {
       description: "Fresh tomatoes, harvested this morning",
       bids: 1,
       lastUpdated: "1 hour ago"
+    },
+    {
+      id: 4,
+      farmer: {
+        name: "Grace Njeri",
+        county: "Nyeri",
+        location: "Nyeri Town",
+        verified: true,
+        rating: 4.7
+      },
+      crop: "Beans",
+      category: "Legumes",
+      quantity: "200 kg",
+      pricePerKg: 80,
+      status: "ready",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
+      description: "High protein kidney beans, organic",
+      bids: 2,
+      lastUpdated: "3 hours ago"
+    },
+    {
+      id: 5,
+      farmer: {
+        name: "Samuel Ochieng",
+        county: "Kisumu",
+        location: "Kisumu Central",
+        verified: true,
+        rating: 4.6
+      },
+      crop: "Sweet Potatoes",
+      category: "Root Tubers",
+      quantity: "400 kg",
+      pricePerKg: 40,
+      status: "ready",
+      image: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400",
+      description: "Fresh orange sweet potatoes",
+      bids: 1,
+      lastUpdated: "5 hours ago"
+    },
+    {
+      id: 6,
+      farmer: {
+        name: "Alice Wambui",
+        county: "Murang'a",
+        location: "Murang'a Town",
+        verified: true,
+        rating: 4.8
+      },
+      crop: "Watermelons",
+      category: "Fruits",
+      quantity: "50 pieces",
+      pricePerKg: 25,
+      status: "ready",
+      image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400",
+      description: "Sweet and juicy watermelons",
+      bids: 4,
+      lastUpdated: "1 hour ago"
+    },
+    {
+      id: 7,
+      farmer: {
+        name: "David Kipkoech",
+        county: "Eldoret",
+        location: "Eldoret Town",
+        verified: true,
+        rating: 4.9
+      },
+      crop: "Cabbages",
+      category: "Vegetables",
+      quantity: "300 kg",
+      pricePerKg: 30,
+      status: "ready",
+      image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=400",
+      description: "Fresh green cabbages",
+      bids: 2,
+      lastUpdated: "2 hours ago"
+    },
+    {
+      id: 8,
+      farmer: {
+        name: "Rebecca Akinyi",
+        county: "Kakamega",
+        location: "Kakamega Town",
+        verified: true,
+        rating: 4.7
+      },
+      crop: "Mangoes",
+      category: "Fruits",
+      quantity: "100 pieces",
+      pricePerKg: 60,
+      status: "ready",
+      image: "https://images.unsplash.com/photo-1605711285791-0219e80e43a3?w=400",
+      description: "Ripe and sweet mangoes",
+      bids: 3,
+      lastUpdated: "4 hours ago"
     }
   ];
 
@@ -92,8 +188,12 @@ const BuyerBrowse = () => {
   });
 
   const handlePlaceBid = (listingId: number) => {
-    // Redirect to login if not authenticated
-    navigate("/buyer-auth");
+    const listing = listings.find(l => l.id === listingId);
+    toast.success(`Bid sent for ${listing?.crop}! Check your dashboard for updates.`);
+  };
+
+  const handleMessage = (farmerName: string) => {
+    toast.success(`Opening chat with ${farmerName}`);
   };
 
   return (
@@ -248,7 +348,11 @@ const BuyerBrowse = () => {
                   >
                     Place Bid
                   </Button>
-                  <Button variant="outline" size="icon">
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    onClick={() => handleMessage(listing.farmer.name)}
+                  >
                     <MessageCircle className="h-4 w-4" />
                   </Button>
                 </div>
