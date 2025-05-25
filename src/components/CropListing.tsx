@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Edit, Eye, MessageCircle, TrendingUp } from "lucide-react";
+import { Edit, Eye, MessageCircle, TrendingUp, Phone, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface FarmerData {
   name: string;
@@ -20,6 +21,7 @@ interface CropListingProps {
 }
 
 const CropListing = ({ farmerData }: CropListingProps) => {
+  const navigate = useNavigate();
   const [listings] = useState([
     {
       id: 1,
@@ -53,9 +55,44 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 80,
       status: "growing",
       daysToHarvest: 45,
-      image: "https://images.unsplash.com/photo-1583114329515-3e7a4de76cc3?w=300",
+      image: "https://images.unsplash.com/photo-1432839737174-5b43eeba3195?w=300",
       bids: [],
       messages: 0
+    },
+    {
+      id: 4,
+      crop: "Tomatoes",
+      quantity: "400 kg",
+      pricePerKg: 65,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1546470427-e5e6c0e8fb30?w=300",
+      bids: [
+        { buyerName: "SuperMarket Chain", amount: 70, timestamp: "1 hour ago" }
+      ],
+      messages: 2
+    },
+    {
+      id: 5,
+      crop: "Cabbage",
+      quantity: "200 kg",
+      pricePerKg: 30,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300",
+      bids: [],
+      messages: 0
+    },
+    {
+      id: 6,
+      crop: "Carrots",
+      quantity: "150 kg",
+      pricePerKg: 55,
+      status: "harvesting",
+      daysToHarvest: 5,
+      image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300",
+      bids: [],
+      messages: 1
     }
   ]);
 
@@ -75,6 +112,19 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       case "growing": return `${days} days to harvest`;
       default: return status;
     }
+  };
+
+  const handleContact = (phone: string) => {
+    window.open(`tel:${phone}`);
+  };
+
+  const handleMessage = () => {
+    // Navigate to messages tab in farmer dashboard
+    navigate("/farmer-dashboard");
+  };
+
+  const handleRate = () => {
+    alert("Rating functionality coming soon!");
   };
 
   return (
@@ -142,12 +192,33 @@ const CropListing = ({ farmerData }: CropListingProps) => {
                   <Eye className="h-4 w-4 mr-1" />
                   View
                 </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => handleContact("0711122233")}
+                  className="flex items-center gap-1"
+                >
+                  <Phone className="h-4 w-4" />
+                </Button>
                 {listing.messages > 0 && (
-                  <Button variant="outline" size="sm" className="flex items-center gap-1">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleMessage}
+                    className="flex items-center gap-1"
+                  >
                     <MessageCircle className="h-4 w-4" />
                     {listing.messages}
                   </Button>
                 )}
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={handleRate}
+                  className="flex items-center gap-1"
+                >
+                  <Star className="h-4 w-4" />
+                </Button>
               </div>
             </CardContent>
           </Card>

@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Search, ArrowLeft, MapPin, Calendar, TrendingUp } from "lucide-react";
+import { Search, ArrowLeft, MapPin, Calendar, TrendingUp, Phone, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const CropRepository = () => {
@@ -17,18 +17,23 @@ const CropRepository = () => {
   const cropCategories = [
     { name: "All Categories", crops: [] },
     { name: "Cereals", crops: ["Maize", "Wheat", "Rice", "Barley", "Sorghum", "Millet"] },
-    { name: "Legumes", crops: ["Beans", "Peas", "Lentils", "Chickpeas", "Cowpeas"] },
-    { name: "Vegetables", crops: ["Tomatoes", "Onions", "Cabbages", "Kale", "Spinach", "Carrots"] },
-    { name: "Fruits", crops: ["Bananas", "Mangoes", "Avocados", "Oranges", "Apples", "Pineapples"] },
-    { name: "Root Tubers", crops: ["Potatoes", "Sweet Potatoes", "Cassava", "Yams", "Carrots"] },
+    { name: "Legumes", crops: ["Beans", "Peas", "Lentils", "Chickpeas", "Cowpeas", "Green Grams"] },
+    { name: "Vegetables", crops: ["Tomatoes", "Onions", "Cabbages", "Kale", "Spinach", "Carrots", "Cucumber", "Bell Peppers", "Broccoli"] },
+    { name: "Fruits", crops: ["Bananas", "Mangoes", "Avocados", "Oranges", "Apples", "Pineapples", "Watermelons", "Passion Fruits"] },
+    { name: "Root Tubers", crops: ["Potatoes", "Sweet Potatoes", "Cassava", "Yams", "Arrow Roots"] },
     { name: "Cash Crops", crops: ["Coffee", "Tea", "Cotton", "Pyrethrum", "Tobacco", "Sugarcane"] }
   ];
 
   const counties = [
-    "All Counties", "Nairobi", "Kiambu", "Nakuru", "Meru", "Kakamega", "Machakos", "Nyeri"
+    "All Counties", "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo-Marakwet", "Embu", "Garissa", 
+    "Homa Bay", "Isiolo", "Kajiado", "Kakamega", "Kericho", "Kiambu", "Kilifi", "Kirinyaga", 
+    "Kisii", "Kisumu", "Kitui", "Kwale", "Laikipia", "Lamu", "Machakos", "Makueni", "Mandera", 
+    "Marsabit", "Meru", "Migori", "Mombasa", "Murang'a", "Nairobi", "Nakuru", "Nandi", "Narok", 
+    "Nyamira", "Nyandarua", "Nyeri", "Samburu", "Siaya", "Taita-Taveta", "Tana River", "Tharaka-Nithi", 
+    "Trans Nzoia", "Turkana", "Uasin Gishu", "Vihiga", "Wajir", "West Pokot"
   ];
 
-  // Sample data for crops with farmers
+  // Comprehensive sample data for crops with farmers
   const cropsWithFarmers = [
     {
       crop: "Maize",
@@ -36,7 +41,7 @@ const CropRepository = () => {
       farmers: [
         {
           id: 1,
-          name: "Mary Wanjiku",
+          name: "Kelvin Kamau",
           county: "Nakuru",
           location: "Njoro",
           quantity: "2 tons",
@@ -44,18 +49,20 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.9,
+          phone: "0711122233",
           image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300"
         },
         {
           id: 2,
-          name: "David Mwangi",
-          county: "Nakuru", 
-          location: "Molo",
+          name: "Grace Wanjiru",
+          county: "Trans Nzoia", 
+          location: "Kitale",
           quantity: "1.5 tons",
           pricePerKg: 38,
           status: "harvesting",
           verified: true,
           rating: 4.7,
+          phone: "0711122233",
           image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300"
         }
       ]
@@ -66,14 +73,28 @@ const CropRepository = () => {
       farmers: [
         {
           id: 3,
-          name: "John Doe",
-          county: "Kiambu",
-          location: "Kiambu Town",
+          name: "Samuel Kiprotich",
+          county: "Nyandarua",
+          location: "Ol Kalou",
           quantity: "500 kg",
           pricePerKg: 45,
           status: "ready",
           verified: true,
           rating: 4.8,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300"
+        },
+        {
+          id: 4,
+          name: "Mary Nyambura",
+          county: "Kiambu",
+          location: "Limuru",
+          quantity: "800 kg",
+          pricePerKg: 42,
+          status: "ready",
+          verified: false,
+          rating: 4.6,
+          phone: "0711122233",
           image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300"
         }
       ]
@@ -83,16 +104,112 @@ const CropRepository = () => {
       category: "Vegetables",
       farmers: [
         {
-          id: 4,
-          name: "Peter Kamau",
+          id: 5,
+          name: "Peter Mwangi",
           county: "Meru",
           location: "Maua",
           quantity: "300 kg",
           pricePerKg: 65,
           status: "ready",
-          verified: false,
+          verified: true,
           rating: 4.5,
+          phone: "0711122233",
           image: "https://images.unsplash.com/photo-1546470427-e5e6c0e8fb30?w=300"
+        }
+      ]
+    },
+    {
+      crop: "Beans",
+      category: "Legumes",
+      farmers: [
+        {
+          id: 6,
+          name: "Jane Muthoni",
+          county: "Embu",
+          location: "Runyenjes",
+          quantity: "200 kg",
+          pricePerKg: 120,
+          status: "ready",
+          verified: true,
+          rating: 4.8,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1432839737174-5b43eeba3195?w=300"
+        }
+      ]
+    },
+    {
+      crop: "Cabbage",
+      category: "Vegetables", 
+      farmers: [
+        {
+          id: 7,
+          name: "David Ochieng",
+          county: "Kisii",
+          location: "Keroka",
+          quantity: "400 kg",
+          pricePerKg: 30,
+          status: "ready",
+          verified: true,
+          rating: 4.7,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300"
+        }
+      ]
+    },
+    {
+      crop: "Bananas",
+      category: "Fruits",
+      farmers: [
+        {
+          id: 8,
+          name: "Rose Akinyi",
+          county: "Kisumu",
+          location: "Maseno",
+          quantity: "150 bunches",
+          pricePerKg: 80,
+          status: "ready",
+          verified: true,
+          rating: 4.9,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300"
+        }
+      ]
+    },
+    {
+      crop: "Avocados",
+      category: "Fruits",
+      farmers: [
+        {
+          id: 9,
+          name: "Francis Mutua",
+          county: "Murang'a",
+          location: "Kandara",
+          quantity: "250 kg",
+          pricePerKg: 150,
+          status: "ready",
+          verified: true,
+          rating: 4.6,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=300"
+        }
+      ]
+    },
+    {
+      crop: "Carrots",
+      category: "Vegetables",
+      farmers: [
+        {
+          id: 10,
+          name: "Agnes Wafula",
+          county: "Bungoma",
+          location: "Webuye",
+          quantity: "180 kg",
+          pricePerKg: 55,
+          status: "harvesting",
+          verified: true,
+          rating: 4.4,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300"
         }
       ]
     }
@@ -106,6 +223,14 @@ const CropRepository = () => {
     
     return matchesSearch && matchesCategory && matchesCounty;
   });
+
+  const handleContact = (phone: string) => {
+    window.open(`tel:${phone}`);
+  };
+
+  const handleRate = () => {
+    alert("Rating functionality - redirecting to rating system!");
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -242,8 +367,19 @@ const CropRepository = () => {
                             <TrendingUp className="h-4 w-4 mr-1" />
                             Bid
                           </Button>
-                          <Button variant="outline" size="sm">
-                            Contact
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={() => handleContact(farmer.phone)}
+                          >
+                            <Phone className="h-4 w-4" />
+                          </Button>
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={handleRate}
+                          >
+                            <Star className="h-4 w-4" />
                           </Button>
                         </div>
                       </CardContent>
