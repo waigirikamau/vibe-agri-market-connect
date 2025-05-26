@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/80f009c3-17f4-49b4-98d6-1b2c3648e9a0
+**URL**: https://preview--vibe-agri-market-connect.lovable.app/
 
 ## How can I edit this code?
 
