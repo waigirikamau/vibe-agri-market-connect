@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sprout, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const FarmerAuth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -25,34 +25,32 @@ const FarmerAuth = () => {
     if (isLogin) {
       // Demo login validation
       if (phone === demoPhone && password === demoPassword) {
-        toast({
-          title: "Login Successful!",
-          description: "Welcome back to AgriConnect",
+        toast.success("Welcome to Shamba Connect Portal!", {
+          duration: 2000,
         });
-        navigate("/farmer-dashboard");
+        setTimeout(() => {
+          navigate("/farmer-dashboard");
+        }, 1500);
       } else {
-        toast({
-          title: "Login Failed",
-          description: "Demo credentials: Phone: 0712345678, Password: farmer123",
-          variant: "destructive",
+        toast.error("Login Failed - Demo credentials: Phone: 0712345678, Password: farmer123", {
+          duration: 4000,
         });
       }
     } else {
       // Signup validation
       if (password !== confirmPassword) {
-        toast({
-          title: "Password Mismatch",
-          description: "Passwords do not match",
-          variant: "destructive",
+        toast.error("Passwords do not match", {
+          duration: 3000,
         });
         return;
       }
       
-      toast({
-        title: "Account Created!",
-        description: "Please complete your profile setup",
+      toast.success("Account Created! Please complete your profile setup", {
+        duration: 2000,
       });
-      navigate("/farmer-profile");
+      setTimeout(() => {
+        navigate("/farmer-profile");
+      }, 1500);
     }
   };
 
@@ -77,7 +75,7 @@ const FarmerAuth = () => {
               {isLogin ? "Farmer Login" : "Create Farmer Account"}
             </CardTitle>
             <CardDescription>
-              {isLogin ? "Welcome back to AgriConnect" : "Join thousands of farmers on AgriConnect"}
+              {isLogin ? "Welcome back to Shamba Connect" : "Join thousands of farmers on Shamba Connect"}
             </CardDescription>
           </CardHeader>
           

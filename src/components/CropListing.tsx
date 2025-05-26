@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -31,7 +30,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 45,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300",
+      image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&h=200&fit=crop",
       bids: [
         { buyerName: "Fresh Market Ltd", amount: 50, timestamp: "2 hours ago" },
         { buyerName: "Green Grocers", amount: 48, timestamp: "4 hours ago" }
@@ -45,7 +44,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 35,
       status: "harvesting",
       daysToHarvest: 3,
-      image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300",
+      image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=300&h=200&fit=crop",
       bids: [],
       messages: 1
     },
@@ -56,7 +55,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 80,
       status: "growing",
       daysToHarvest: 45,
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300",
+      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=200&fit=crop",
       bids: [],
       messages: 0
     },
@@ -67,7 +66,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 65,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1546470427-e5e6c0e8fb30?w=300",
+      image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&h=200&fit=crop",
       bids: [
         { buyerName: "SuperMarket Chain", amount: 70, timestamp: "1 hour ago" }
       ],
@@ -80,7 +79,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 30,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300",
+      image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300&h=200&fit=crop",
       bids: [],
       messages: 0
     },
@@ -91,7 +90,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 55,
       status: "harvesting",
       daysToHarvest: 5,
-      image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300",
+      image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=300&h=200&fit=crop",
       bids: [],
       messages: 1
     },
@@ -102,7 +101,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 40,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=300",
+      image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=300&h=200&fit=crop",
       bids: [],
       messages: 0
     },
@@ -113,7 +112,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 25,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300",
+      image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=300&h=200&fit=crop",
       bids: [
         { buyerName: "Fruit Vendors Ltd", amount: 30, timestamp: "3 hours ago" }
       ],
@@ -126,7 +125,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 50,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=300",
+      image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=300&h=200&fit=crop",
       bids: [],
       messages: 0
     },
@@ -137,7 +136,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 60,
       status: "harvesting",
       daysToHarvest: 7,
-      image: "https://images.unsplash.com/photo-1605711285791-0219e80e43a3?w=300",
+      image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=300&h=200&fit=crop",
       bids: [],
       messages: 2
     }
@@ -162,20 +161,31 @@ const CropListing = ({ farmerData }: CropListingProps) => {
   };
 
   const handleEdit = (cropId: number) => {
-    toast.success(`Editing ${listings.find(l => l.id === cropId)?.crop} listing`);
+    const crop = listings.find(l => l.id === cropId);
+    toast.success(`Opening edit form for ${crop?.crop} listing`, {
+      duration: 2000,
+    });
   };
 
   const handleView = (cropId: number) => {
-    toast.info(`Viewing ${listings.find(l => l.id === cropId)?.crop} details`);
+    const crop = listings.find(l => l.id === cropId);
+    toast.info(`Viewing detailed information for ${crop?.crop}`, {
+      duration: 2000,
+    });
   };
 
   const handleContact = (phone: string) => {
     window.open(`tel:${phone}`);
-    toast.success("Calling farmer...");
+    toast.success("Initiating call...", {
+      duration: 2000,
+    });
   };
 
   const handleMessage = (cropId: number) => {
-    toast.success(`Opening chat for ${listings.find(l => l.id === cropId)?.crop}`);
+    const crop = listings.find(l => l.id === cropId);
+    toast.success(`Opening chat for ${crop?.crop} listing`, {
+      duration: 2000,
+    });
     // Navigate to messages tab in farmer dashboard
     setTimeout(() => {
       const event = new CustomEvent('switchTab', { detail: 'messages' });
@@ -184,7 +194,10 @@ const CropListing = ({ farmerData }: CropListingProps) => {
   };
 
   const handleRate = (cropId: number) => {
-    toast.success(`Rating ${listings.find(l => l.id === cropId)?.crop} experience`);
+    const crop = listings.find(l => l.id === cropId);
+    toast.success(`Opening rating system for ${crop?.crop} experience`, {
+      duration: 2000,
+    });
   };
 
   return (
@@ -265,7 +278,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  onClick={() => handleContact("0711122233")}
+                  onClick={() => handleContact(farmerData.phone)}
                   className="flex items-center gap-1"
                 >
                   <Phone className="h-4 w-4" />

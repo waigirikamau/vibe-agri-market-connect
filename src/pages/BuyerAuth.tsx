@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ShoppingCart, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const BuyerAuth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -25,34 +25,32 @@ const BuyerAuth = () => {
     if (isLogin) {
       // Demo login validation
       if (phone === demoPhone && password === demoPassword) {
-        toast({
-          title: "Login Successful!",
-          description: "Welcome to AgriConnect Buyer Portal",
+        toast.success("Welcome to Shamba Connect Portal!", {
+          duration: 2000,
         });
-        navigate("/buyer-dashboard");
+        setTimeout(() => {
+          navigate("/buyer-dashboard");
+        }, 1500);
       } else {
-        toast({
-          title: "Login Failed",
-          description: "Demo credentials: Phone: 0722123456, Password: buyer123",
-          variant: "destructive",
+        toast.error("Login Failed - Demo credentials: Phone: 0722123456, Password: buyer123", {
+          duration: 4000,
         });
       }
     } else {
       // Signup validation
       if (password !== confirmPassword) {
-        toast({
-          title: "Password Mismatch",
-          description: "Passwords do not match",
-          variant: "destructive",
+        toast.error("Passwords do not match", {
+          duration: 3000,
         });
         return;
       }
       
-      toast({
-        title: "Account Created!",
-        description: "Please complete your buyer profile",
+      toast.success("Account Created! Please complete your buyer profile", {
+        duration: 2000,
       });
-      navigate("/buyer-profile");
+      setTimeout(() => {
+        navigate("/buyer-profile");
+      }, 1500);
     }
   };
 
