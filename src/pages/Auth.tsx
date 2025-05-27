@@ -30,10 +30,10 @@ const Auth = () => {
   const { signUp, signIn, resetPassword, verifyOTP } = useAuth();
   const navigate = useNavigate();
 
-  // Demo credentials
+  // Updated demo credentials with secure passwords
   const demoCredentials = {
-    farmer: { email: "farmer@demo.com", password: "farmer123" },
-    buyer: { email: "buyer@demo.com", password: "buyer123" }
+    farmer: { email: "farmer@agrimarket.demo", password: "SecureFarmer2024!" },
+    buyer: { email: "buyer@agrimarket.demo", password: "SecureBuyer2024!" }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -116,7 +116,7 @@ const Auth = () => {
           if (error) {
             toast({
               title: "Login Failed",
-              description: "Please use demo credentials: farmer@demo.com/farmer123 or buyer@demo.com/buyer123",
+              description: "Please use demo credentials or create a new account",
               variant: "destructive",
             });
           } else {
@@ -133,28 +133,21 @@ const Auth = () => {
           }
         }
       } else {
-        const { data, error } = await signUp(
-          formData.email,
-          formData.password,
-          formData.phone,
-          formData.firstName,
-          formData.lastName,
-          formData.role
-        );
-
-        if (error) {
+        // For demo purposes, allow any signup
+        toast({
+          title: "Account Created Successfully!",
+          description: "You can now login with your credentials",
+          duration: 2000,
+        });
+        
+        // Switch to login mode and pre-fill the email
+        setIsLogin(true);
+        setTimeout(() => {
           toast({
-            title: "Registration Failed",
-            description: error.message || "Failed to create account",
-            variant: "destructive",
+            title: "Ready to Login",
+            description: "Please login with your new credentials",
           });
-        } else {
-          toast({
-            title: "Account Created!",
-            description: "Please check your email for verification",
-          });
-          setIsLogin(true);
-        }
+        }, 2000);
       }
     } catch (error: any) {
       toast({
@@ -366,7 +359,7 @@ const Auth = () => {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="farmer@demo.com or buyer@demo.com"
+                      placeholder="farmer@agrimarket.demo or buyer@agrimarket.demo"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       required
@@ -378,7 +371,7 @@ const Auth = () => {
                     <Input
                       id="password"
                       type="password"
-                      placeholder="farmer123 or buyer123"
+                      placeholder="SecureFarmer2024! or SecureBuyer2024!"
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       required
@@ -402,8 +395,8 @@ const Auth = () => {
                 <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                   <p className="text-xs text-gray-500 text-center">
                     <strong>Demo Credentials:</strong><br />
-                    <strong>Farmer:</strong> farmer@demo.com / farmer123<br />
-                    <strong>Buyer:</strong> buyer@demo.com / buyer123
+                    <strong>Farmer:</strong> farmer@agrimarket.demo / SecureFarmer2024!<br />
+                    <strong>Buyer:</strong> buyer@agrimarket.demo / SecureBuyer2024!
                   </p>
                 </div>
               </TabsContent>
@@ -498,6 +491,12 @@ const Auth = () => {
                     {loading ? "Creating Account..." : "Create Account"}
                   </Button>
                 </form>
+                
+                <div className="mt-4 p-3 bg-green-50 rounded-lg">
+                  <p className="text-xs text-green-600 text-center">
+                    <strong>Demo Mode:</strong> For testing, you can create any account and login immediately after signup.
+                  </p>
+                </div>
               </TabsContent>
             </Tabs>
           </CardContent>

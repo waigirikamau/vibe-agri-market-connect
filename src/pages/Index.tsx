@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sprout, Users, TrendingUp, Shield, ArrowRight, Phone, Mail, MapPin, Clock, Award, Handshake } from "lucide-react";
+import { Sprout, Users, TrendingUp, Shield, ArrowRight, Phone, Mail, MapPin, Clock, Award, Handshake, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
@@ -12,9 +12,12 @@ const Index = () => {
   const [showContact, setShowContact] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat relative" 
+         style={{
+           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`
+         }}>
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-white/95 backdrop-blur-sm shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -48,12 +51,12 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 text-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Connecting Farmers to Markets
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-100">
             Shamba Connect bridges the gap between farmers and buyers, creating a transparent, 
             efficient marketplace for fresh produce across Kenya.
           </p>
@@ -70,7 +73,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               onClick={() => navigate("/auth")}
-              className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3"
+              className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20 px-8 py-3"
             >
               Browse as Buyer
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -80,12 +83,12 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Why Choose Shamba Connect?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Users className="h-12 w-12 text-green-600 mx-auto mb-4" />
@@ -112,13 +115,72 @@ const Index = () => {
 
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
-                <Shield className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <CardTitle>Secure Payments</CardTitle>
+                <CreditCard className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                <CardTitle>M-Pesa Payments</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Secure payment processing with M-Pesa integration and buyer protection for safe transactions.
+                  Secure M-Pesa payment integration with buyer protection for safe and instant transactions.
                 </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Shield className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                <CardTitle>Quality Assurance</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Verified farmers, quality checks, and transparent ratings ensure you get the best produce.
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Credentials Section */}
+      <section className="py-12 px-4 bg-green-50/95 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Try Our Demo
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Experience Shamba Connect with our demo accounts. No setup required!
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-white shadow-lg">
+              <CardHeader>
+                <Sprout className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <CardTitle className="text-green-700">Farmer Demo Account</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <p className="text-sm"><strong>Email:</strong> farmer@agrimarket.demo</p>
+                <p className="text-sm"><strong>Password:</strong> SecureFarmer2024!</p>
+                <Button 
+                  onClick={() => navigate("/auth")}
+                  className="w-full mt-4 bg-green-600 hover:bg-green-700"
+                >
+                  Try Farmer Portal
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-white shadow-lg">
+              <CardHeader>
+                <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                <CardTitle className="text-blue-700">Buyer Demo Account</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <p className="text-sm"><strong>Email:</strong> buyer@agrimarket.demo</p>
+                <p className="text-sm"><strong>Password:</strong> SecureBuyer2024!</p>
+                <Button 
+                  onClick={() => navigate("/auth")}
+                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+                >
+                  Try Buyer Portal
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -226,7 +288,7 @@ const Index = () => {
       </Dialog>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-gray-900/95 backdrop-blur-sm text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Sprout className="h-6 w-6 text-green-400" />
