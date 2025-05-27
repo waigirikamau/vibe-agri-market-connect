@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,7 +35,7 @@ const Auth = () => {
   };
 
   const validateForm = () => {
-    if (!formData.phone || !formData.password) {
+    if (!formData.email || !formData.password) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields",
@@ -46,7 +45,7 @@ const Auth = () => {
     }
 
     if (!isLogin) {
-      if (!formData.email || !formData.firstName || !formData.lastName) {
+      if (!formData.phone || !formData.firstName || !formData.lastName) {
         toast({
           title: "Missing Information",
           description: "Please fill in all required fields",
@@ -85,7 +84,7 @@ const Auth = () => {
 
     try {
       if (isLogin) {
-        const { data, error } = await signIn(formData.phone, formData.password);
+        const { data, error } = await signIn(formData.email, formData.password);
         
         if (error) {
           toast({
@@ -101,6 +100,7 @@ const Auth = () => {
           });
           
           setTimeout(() => {
+            // Get user role from metadata or default to farmer
             const userRole = data?.user?.user_metadata?.role || 'farmer';
             navigate(userRole === 'farmer' ? '/farmer-dashboard' : '/buyer-dashboard');
           }, 1500);
@@ -122,11 +122,11 @@ const Auth = () => {
             variant: "destructive",
           });
         } else {
-          setShowOTP(true);
           toast({
             title: "Account Created!",
-            description: "Please verify your email with the OTP sent to your email",
+            description: "Please check your email for verification",
           });
+          setIsLogin(true);
         }
       }
     } catch (error: any) {
@@ -335,13 +335,13 @@ const Auth = () => {
               <TabsContent value="login">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="email">Email Address</Label>
                     <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="0712345678"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      id="email"
+                      type="email"
+                      placeholder="farmer@demo.com or buyer@demo.com"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
                       required
                     />
                   </div>
@@ -351,7 +351,7 @@ const Auth = () => {
                     <Input
                       id="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="farmer123 or buyer123"
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       required
@@ -371,6 +371,14 @@ const Auth = () => {
                     Forgot Password?
                   </Button>
                 </form>
+
+                <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-500 text-center">
+                    <strong>Demo Credentials:</strong><br />
+                    <strong>Farmer:</strong> farmer@demo.com / farmer123<br />
+                    <strong>Buyer:</strong> buyer@demo.com / buyer123
+                  </p>
+                </div>
               </TabsContent>
               
               <TabsContent value="signup">

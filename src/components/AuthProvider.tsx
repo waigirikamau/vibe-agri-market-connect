@@ -8,7 +8,7 @@ interface AuthContextType {
   session: Session | null;
   loading: boolean;
   signUp: (email: string, password: string, phone: string, firstName: string, lastName: string, role: string) => Promise<any>;
-  signIn: (phone: string, password: string) => Promise<any>;
+  signIn: (email: string, password: string) => Promise<any>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<any>;
   verifyOTP: (email: string, otpCode: string, type: string) => Promise<any>;
@@ -72,7 +72,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        phone,
         options: {
           data: {
             first_name: firstName,
@@ -91,21 +90,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const signIn = async (phone: string, password: string) => {
+  const signIn = async (email: string, password: string) => {
     try {
-      // First, find user by phone number
-      const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('email')
-        .eq('phone_number', phone)
-        .single();
-
-      if (profileError || !profile) {
-        throw new Error('No account found with this phone number');
-      }
-
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: profile.email,
+        email,
         password
       });
 
