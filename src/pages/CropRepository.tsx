@@ -47,7 +47,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.9,
-          phone: "0711122233",
+          phone: "+254711234567",
           image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
         },
         {
@@ -60,7 +60,7 @@ const CropRepository = () => {
           status: "harvesting",
           verified: true,
           rating: 4.7,
-          phone: "0711122233",
+          phone: "+254722345678",
           image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
         }
       ]
@@ -71,15 +71,15 @@ const CropRepository = () => {
       farmers: [
         {
           id: 3,
-          name: "Samuel Kiprotich",
-          county: "Nyandarua",
-          location: "Ol Kalou",
+          name: "Kelvin Kamau",
+          county: "Kiambu",
+          location: "Limuru",
           quantity: "500 kg",
           pricePerKg: 45,
           status: "ready",
           verified: true,
           rating: 4.8,
-          phone: "0711122233",
+          phone: "+254711234567",
           image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
         },
         {
@@ -92,7 +92,7 @@ const CropRepository = () => {
           status: "ready",
           verified: false,
           rating: 4.6,
-          phone: "0711122233",
+          phone: "+254733456789",
           image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
         }
       ]
@@ -111,7 +111,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.5,
-          phone: "0711122233",
+          phone: "+254744567890",
           image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop"
         }
       ]
@@ -130,7 +130,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.8,
-          phone: "0711122233",
+          phone: "+254755678901",
           image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
         }
       ]
@@ -141,7 +141,7 @@ const CropRepository = () => {
       farmers: [
         {
           id: 13,
-          name: "Michael Kiprop",
+          name: "Kelvin Kamau",
           county: "Kericho",
           location: "Londiani",
           quantity: "150 kg",
@@ -149,7 +149,20 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.8,
-          phone: "0711122233",
+          phone: "+254711234567",
+          image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=300&fit=crop"
+        },
+        {
+          id: 14,
+          name: "Michael Kiprop",
+          county: "Kericho",
+          location: "Londiani",
+          quantity: "120 kg",
+          pricePerKg: 95,
+          status: "harvesting",
+          verified: true,
+          rating: 4.7,
+          phone: "+254766789012",
           image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=300&fit=crop"
         }
       ]
@@ -168,7 +181,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.7,
-          phone: "0711122233",
+          phone: "+254777890123",
           image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=400&h=300&fit=crop"
         }
       ]
@@ -187,8 +200,8 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.9,
-          phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=300&fit=crop"
+          phone: "+254788901234",
+          image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -206,7 +219,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.6,
-          phone: "0711122233",
+          phone: "+254799012345",
           image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&h=300&fit=crop"
         }
       ]
@@ -225,7 +238,7 @@ const CropRepository = () => {
           status: "harvesting",
           verified: true,
           rating: 4.4,
-          phone: "0711122233",
+          phone: "+254700123456",
           image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&h=300&fit=crop"
         }
       ]
@@ -244,7 +257,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.7,
-          phone: "0711122233",
+          phone: "+254711234567",
           image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=300&fit=crop"
         }
       ]
@@ -263,7 +276,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.5,
-          phone: "0711122233",
+          phone: "+254722345678",
           image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=400&h=300&fit=crop"
         }
       ]
@@ -273,7 +286,7 @@ const CropRepository = () => {
       category: "Legumes",
       farmers: [
         {
-          id: 14,
+          id: 15,
           name: "Catherine Adhiambo",
           county: "Homa Bay",
           location: "Ndhiwa",
@@ -282,7 +295,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.6,
-          phone: "0711122233",
+          phone: "+254733456789",
           image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
         }
       ]
@@ -292,7 +305,7 @@ const CropRepository = () => {
       category: "Fruits",
       farmers: [
         {
-          id: 15,
+          id: 16,
           name: "Robert Kibet",
           county: "Bomet",
           location: "Sotik",
@@ -301,7 +314,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.9,
-          phone: "0711122233",
+          phone: "+254744567890",
           image: "https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=400&h=300&fit=crop"
         }
       ]
@@ -311,7 +324,7 @@ const CropRepository = () => {
       category: "Fruits",
       farmers: [
         {
-          id: 16,
+          id: 17,
           name: "Lucy Wambui",
           county: "Makueni",
           location: "Wote",
@@ -320,7 +333,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.4,
-          phone: "0711122233",
+          phone: "+254755678901",
           image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
         }
       ]
@@ -330,7 +343,7 @@ const CropRepository = () => {
       category: "Root Tubers",
       farmers: [
         {
-          id: 17,
+          id: 18,
           name: "Joseph Onyango",
           county: "Siaya",
           location: "Bondo",
@@ -339,7 +352,7 @@ const CropRepository = () => {
           status: "ready",
           verified: true,
           rating: 4.5,
-          phone: "0711122233",
+          phone: "+254766789012",
           image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&h=300&fit=crop"
         }
       ]
@@ -379,9 +392,11 @@ const CropRepository = () => {
             
             <h1 className="text-2xl font-bold text-gray-800">Crop Repository</h1>
             
-            <Button onClick={() => navigate("/buyer-auth")} className="bg-blue-600 hover:bg-blue-700">
-              Login to Bid
-            </Button>
+            <div className="flex gap-2">
+              <Button onClick={() => navigate("/buyer-auth")} className="bg-blue-600 hover:bg-blue-700">
+                Login to Bid
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -394,7 +409,7 @@ const CropRepository = () => {
               Browse All Crops by Category
             </CardTitle>
             <CardDescription>
-              Explore crops organized by categories with farmer listings
+              Explore crops organized by categories with farmer listings. Demo Login: farmer@agrimarket.demo / SecureFarmer2024! (Farmer) | buyer@agrimarket.demo / SecureBuyer2024! (Buyer)
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -12,6 +11,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<any>;
   verifyOTP: (email: string, otpCode: string, type: string) => Promise<any>;
+  createDemoUsers: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -66,6 +66,50 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const createDemoUsers = async () => {
+    try {
+      // Create demo farmer account
+      const { data: farmerData, error: farmerError } = await supabase.auth.signUp({
+        email: 'farmer@agrimarket.demo',
+        password: 'SecureFarmer2024!',
+        options: {
+          data: {
+            first_name: 'Kelvin',
+            last_name: 'Kamau',
+            role: 'farmer',
+            phone_number: '+254711234567'
+          }
+        }
+      });
+
+      if (farmerError && !farmerError.message.includes('already registered')) {
+        console.error('Error creating farmer:', farmerError);
+      }
+
+      // Create demo buyer account
+      const { data: buyerData, error: buyerError } = await supabase.auth.signUp({
+        email: 'buyer@agrimarket.demo',
+        password: 'SecureBuyer2024!',
+        options: {
+          data: {
+            first_name: 'Mary',
+            last_name: 'Wanjiku',
+            role: 'buyer',
+            phone_number: '+254722345678'
+          }
+        }
+      });
+
+      if (buyerError && !buyerError.message.includes('already registered')) {
+        console.error('Error creating buyer:', buyerError);
+      }
+
+      console.log('Demo users created successfully');
+    } catch (error) {
+      console.error('Error creating demo users:', error);
+    }
+  };
 
   const signUp = async (email: string, password: string, phone: string, firstName: string, lastName: string, role: string) => {
     try {
@@ -155,7 +199,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     signIn,
     signOut,
     resetPassword,
-    verifyOTP
+    verifyOTP,
+    createDemoUsers
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
