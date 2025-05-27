@@ -112,7 +112,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 25,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=300&h=200&fit=crop",
+      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop",
       bids: [
         { buyerName: "Fruit Vendors Ltd", amount: 30, timestamp: "3 hours ago" }
       ],
@@ -139,6 +139,19 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=300&h=200&fit=crop",
       bids: [],
       messages: 2
+    },
+    {
+      id: 11,
+      crop: "Peas",
+      quantity: "120 kg",
+      pricePerKg: 90,
+      status: "ready",
+      daysToHarvest: 0,
+      image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=300&h=200&fit=crop",
+      bids: [
+        { buyerName: "Green Grocers", amount: 95, timestamp: "1 hour ago" }
+      ],
+      messages: 1
     }
   ]);
 
@@ -186,7 +199,6 @@ const CropListing = ({ farmerData }: CropListingProps) => {
     toast.success(`Opening chat for ${crop?.crop} listing`, {
       duration: 2000,
     });
-    // Navigate to messages tab in farmer dashboard
     setTimeout(() => {
       const event = new CustomEvent('switchTab', { detail: 'messages' });
       window.dispatchEvent(event);

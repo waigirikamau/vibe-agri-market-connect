@@ -30,6 +30,12 @@ const Auth = () => {
   const { signUp, signIn, resetPassword, verifyOTP } = useAuth();
   const navigate = useNavigate();
 
+  // Demo credentials
+  const demoCredentials = {
+    farmer: { email: "farmer@demo.com", password: "farmer123" },
+    buyer: { email: "buyer@demo.com", password: "buyer123" }
+  };
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -84,26 +90,47 @@ const Auth = () => {
 
     try {
       if (isLogin) {
-        const { data, error } = await signIn(formData.email, formData.password);
+        // Check for demo credentials first
+        const isDemoFarmer = formData.email === demoCredentials.farmer.email && formData.password === demoCredentials.farmer.password;
+        const isDemoBuyer = formData.email === demoCredentials.buyer.email && formData.password === demoCredentials.buyer.password;
         
-        if (error) {
-          toast({
-            title: "Login Failed",
-            description: error.message || "Invalid credentials",
-            variant: "destructive",
-          });
-        } else {
+        if (isDemoFarmer || isDemoBuyer) {
+          // Handle demo login
           toast({
             title: "Welcome to Shamba Connect Portal!",
-            description: "Login successful",
+            description: "Demo login successful",
             duration: 2000,
           });
           
           setTimeout(() => {
-            // Get user role from metadata or default to farmer
-            const userRole = data?.user?.user_metadata?.role || 'farmer';
-            navigate(userRole === 'farmer' ? '/farmer-dashboard' : '/buyer-dashboard');
+            if (isDemoFarmer) {
+              navigate('/farmer-dashboard');
+            } else {
+              navigate('/buyer-dashboard');
+            }
           }, 1500);
+        } else {
+          // Try real Supabase authentication
+          const { data, error } = await signIn(formData.email, formData.password);
+          
+          if (error) {
+            toast({
+              title: "Login Failed",
+              description: "Please use demo credentials: farmer@demo.com/farmer123 or buyer@demo.com/buyer123",
+              variant: "destructive",
+            });
+          } else {
+            toast({
+              title: "Welcome to Shamba Connect Portal!",
+              description: "Login successful",
+              duration: 2000,
+            });
+            
+            setTimeout(() => {
+              const userRole = data?.user?.user_metadata?.role || 'farmer';
+              navigate(userRole === 'farmer' ? '/farmer-dashboard' : '/buyer-dashboard');
+            }, 1500);
+          }
         }
       } else {
         const { data, error } = await signUp(

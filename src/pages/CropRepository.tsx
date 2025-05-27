@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,7 +32,6 @@ const CropRepository = () => {
     "Trans Nzoia", "Turkana", "Uasin Gishu", "Vihiga", "Wajir", "West Pokot"
   ];
 
-  // Comprehensive sample data for crops with farmers
   const cropsWithFarmers = [
     {
       crop: "Maize",
@@ -134,6 +132,25 @@ const CropRepository = () => {
           rating: 4.8,
           phone: "0711122233",
           image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      crop: "Peas",
+      category: "Legumes",
+      farmers: [
+        {
+          id: 13,
+          name: "Michael Kiprop",
+          county: "Kericho",
+          location: "Londiani",
+          quantity: "150 kg",
+          pricePerKg: 100,
+          status: "ready",
+          verified: true,
+          rating: 4.8,
+          phone: "0711122233",
+          image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -247,26 +264,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.5,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop"
-        }
-      ]
-    },
-    {
-      crop: "Peas",
-      category: "Legumes",
-      farmers: [
-        {
-          id: 13,
-          name: "Michael Kiprop",
-          county: "Kericho",
-          location: "Londiani",
-          quantity: "150 kg",
-          pricePerKg: 100,
-          status: "ready",
-          verified: true,
-          rating: 4.8,
-          phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=300&fit=crop"
+          image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -323,7 +321,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.4,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop"
+          image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
         }
       ]
     },
@@ -342,7 +340,7 @@ const CropRepository = () => {
           verified: true,
           rating: 4.5,
           phone: "0711122233",
-          image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop"
+          image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&h=300&fit=crop"
         }
       ]
     }
@@ -367,7 +365,6 @@ const CropRepository = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -390,7 +387,6 @@ const CropRepository = () => {
       </header>
 
       <div className="container mx-auto px-4 py-6">
-        {/* Search and Filters */}
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -438,7 +434,6 @@ const CropRepository = () => {
           </CardContent>
         </Card>
 
-        {/* Crop Categories with Farmers */}
         <div className="space-y-8">
           {filteredCrops.map(cropData => (
             <Card key={cropData.crop}>
