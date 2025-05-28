@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,10 +31,10 @@ const Auth = () => {
   const { signUp, signIn, resetPassword, verifyOTP } = useAuth();
   const navigate = useNavigate();
 
-  // Updated demo credentials with secure passwords
+  // Updated demo credentials
   const demoCredentials = {
-    farmer: { email: "farmer@agrimarket.demo", password: "SecureFarmer2024!" },
-    buyer: { email: "buyer@agrimarket.demo", password: "SecureBuyer2024!" }
+    farmer: { email: "farmer@demo.com", password: "SecureFarmer2024!" },
+    buyer: { email: "buyer@demo.com", password: "SecureBuyer2024!" }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -359,10 +360,12 @@ const Auth = () => {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="farmer@agrimarket.demo or buyer@agrimarket.demo"
+                      placeholder="farmer@demo.com or buyer@demo.com"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       required
+                      autoComplete="email"
+                      inputMode="email"
                     />
                   </div>
                   
@@ -375,6 +378,7 @@ const Auth = () => {
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       required
+                      autoComplete="current-password"
                     />
                   </div>
                   
@@ -395,8 +399,8 @@ const Auth = () => {
                 <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                   <p className="text-xs text-gray-500 text-center">
                     <strong>Demo Credentials:</strong><br />
-                    <strong>Farmer:</strong> farmer@agrimarket.demo / SecureFarmer2024!<br />
-                    <strong>Buyer:</strong> buyer@agrimarket.demo / SecureBuyer2024!
+                    <strong>Farmer:</strong> farmer@demo.com / SecureFarmer2024!<br />
+                    <strong>Buyer:</strong> buyer@demo.com / SecureBuyer2024!
                   </p>
                 </div>
               </TabsContent>
@@ -412,6 +416,7 @@ const Auth = () => {
                         value={formData.firstName}
                         onChange={(e) => handleInputChange('firstName', e.target.value)}
                         required
+                        autoComplete="given-name"
                       />
                     </div>
                     <div>
@@ -422,19 +427,22 @@ const Auth = () => {
                         value={formData.lastName}
                         onChange={(e) => handleInputChange('lastName', e.target.value)}
                         required
+                        autoComplete="family-name"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="signupEmail">Email Address</Label>
                     <Input
-                      id="email"
+                      id="signupEmail"
                       type="email"
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       required
+                      autoComplete="email"
+                      inputMode="email"
                     />
                   </div>
                   
@@ -447,6 +455,8 @@ const Auth = () => {
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                       required
+                      autoComplete="tel"
+                      inputMode="tel"
                     />
                   </div>
                   
@@ -472,6 +482,7 @@ const Auth = () => {
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
                       required
+                      autoComplete="new-password"
                     />
                   </div>
                   
@@ -484,6 +495,7 @@ const Auth = () => {
                       value={formData.confirmPassword}
                       onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                       required
+                      autoComplete="new-password"
                     />
                   </div>
                   

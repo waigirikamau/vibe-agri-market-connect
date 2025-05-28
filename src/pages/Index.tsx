@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat relative" 
          style={{
-           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`
+           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')`
          }}>
       {/* Navigation */}
       <nav className="bg-white/95 backdrop-blur-sm shadow-sm border-b">
@@ -64,19 +64,25 @@ const Index = () => {
             <Button
               size="lg"
               onClick={() => navigate("/auth")}
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 relative group"
             >
               Join as Farmer
               <ArrowRight className="ml-2 h-5 w-5" />
+              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Demo: farmer@demo.com / SecureFarmer2024!
+              </div>
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={() => navigate("/auth")}
-              className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20 px-8 py-3"
+              className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20 px-8 py-3 relative group"
             >
               Browse as Buyer
               <ArrowRight className="ml-2 h-5 w-5" />
+              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Demo: buyer@demo.com / SecureBuyer2024!
+              </div>
             </Button>
           </div>
         </div>
@@ -134,53 +140,6 @@ const Index = () => {
                 <CardDescription>
                   Verified farmers, quality checks, and transparent ratings ensure you get the best produce.
                 </CardDescription>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Credentials Section */}
-      <section className="py-12 px-4 bg-green-50/95 backdrop-blur-sm">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Try Our Demo
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Experience Shamba Connect with our demo accounts. No setup required!
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="bg-white shadow-lg">
-              <CardHeader>
-                <Sprout className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                <CardTitle className="text-green-700">Farmer Demo Account</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <p className="text-sm"><strong>Email:</strong> farmer@agrimarket.demo</p>
-                <p className="text-sm"><strong>Password:</strong> SecureFarmer2024!</p>
-                <Button 
-                  onClick={() => navigate("/auth")}
-                  className="w-full mt-4 bg-green-600 hover:bg-green-700"
-                >
-                  Try Farmer Portal
-                </Button>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-white shadow-lg">
-              <CardHeader>
-                <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                <CardTitle className="text-blue-700">Buyer Demo Account</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <p className="text-sm"><strong>Email:</strong> buyer@agrimarket.demo</p>
-                <p className="text-sm"><strong>Password:</strong> SecureBuyer2024!</p>
-                <Button 
-                  onClick={() => navigate("/auth")}
-                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
-                >
-                  Try Buyer Portal
-                </Button>
               </CardContent>
             </Card>
           </div>

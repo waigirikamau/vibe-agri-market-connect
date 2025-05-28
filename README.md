@@ -29,19 +29,24 @@ Shamba Connect is Kenya's premier agricultural marketplace platform that bridges
 - **Transaction History**: Complete record of all transactions
 - **Buyer Protection**: Dispute resolution and refund mechanisms
 
-## 🚀 Demo Credentials
+## 🚀 Demo Access
 
-Experience Shamba Connect with our demo accounts:
+Experience Shamba Connect with our demo accounts - no setup required!
 
 ### Farmer Demo Account
-- **Email**: `farmer@agrimarket.demo`
+- **Email**: `farmer@demo.com`
 - **Password**: `SecureFarmer2024!`
 - **Features**: Add crops, manage listings, view buyer inquiries
 
 ### Buyer Demo Account
-- **Email**: `buyer@agrimarket.demo`
+- **Email**: `buyer@demo.com`
 - **Password**: `SecureBuyer2024!`
 - **Features**: Browse crops, place bids, contact farmers
+
+### Quick Access
+- Click **"Join as Farmer"** on the homepage and use farmer demo credentials
+- Click **"Browse as Buyer"** on the homepage and use buyer demo credentials
+- Hover over buttons to see demo credentials tooltip
 
 ## 🛠 Technology Stack
 
@@ -162,6 +167,14 @@ The application uses Supabase with the following main tables:
 - Data encryption in transit and at rest
 - User verification system
 
+## 📱 Mobile Compatibility
+
+The platform is fully responsive and optimized for mobile devices:
+- Touch-friendly interface
+- Mobile-optimized forms with proper input types
+- Responsive design for all screen sizes
+- Mobile-specific authentication improvements
+
 ## 🚧 Roadmap
 
 ### Phase 1 (Current)
@@ -169,9 +182,10 @@ The application uses Supabase with the following main tables:
 - ✅ User authentication and profiles
 - ✅ Crop listing and browsing
 - ✅ M-Pesa payment integration
+- ✅ Mobile optimization
 
 ### Phase 2 (Upcoming)
-- 📱 Mobile app development
+- 📱 Native mobile app development
 - 🚚 Logistics and delivery integration
 - 📈 Advanced analytics dashboard
 - 🌍 Multi-language support
@@ -213,3 +227,4 @@ This project is proprietary software. All rights reserved.
 ---
 
 **Shamba Connect** - Empowering farmers, connecting markets. 🌾
+
