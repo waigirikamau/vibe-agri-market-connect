@@ -55,7 +55,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 80,
       status: "growing",
       daysToHarvest: 45,
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=200&fit=crop",
+      image: "https://portal.mkulimabora.org/admin/product_photos_compressed/970.webp",
       bids: [],
       messages: 0
     },
@@ -79,7 +79,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 30,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1594282486438-dcabc4d366b1?w=300&h=200&fit=crop",
+      image: "https://www.savemari.com/uploads/advert_images/4838-0-82785100-1594983419.jpg",
       bids: [],
       messages: 0
     },
@@ -101,7 +101,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 40,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=300&h=200&fit=crop",
+      image: "https://extension.okstate.edu/fact-sheets/images/sweet-potato-production-hero.jpg",
       bids: [],
       messages: 0
     },
@@ -112,7 +112,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 25,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop",
+      image: "https://www.thespruce.com/thmb/GnzUKS-AH_P3B8cYPGlXqhlZXdo=/970x0/filters:no_upscale():max_bytes(150000):strip_icc()/Deep-FriedWatermelon-CharleneCollins-GettyImages-e35b2c6f05274f81ab5d081280b8f3b4.jpg",
       bids: [
         { buyerName: "Fruit Vendors Ltd", amount: 30, timestamp: "3 hours ago" }
       ],
@@ -147,7 +147,7 @@ const CropListing = ({ farmerData }: CropListingProps) => {
       pricePerKg: 90,
       status: "ready",
       daysToHarvest: 0,
-      image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=300&h=200&fit=crop",
+      image: "https://www.simlaw.co.ke/uploads/product/WtG3CPEAS%20PLUM.jpeg",
       bids: [
         { buyerName: "Green Grocers", amount: 95, timestamp: "1 hour ago" }
       ],
