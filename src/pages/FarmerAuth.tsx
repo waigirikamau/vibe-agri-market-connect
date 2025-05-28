@@ -10,21 +10,21 @@ import { toast } from "sonner";
 
 const FarmerAuth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  // Demo credentials
-  const demoPhone = "0712345678";
-  const demoPassword = "farmer123";
+  // Demo credentials that match the main Auth page
+  const demoEmail = "farmer@demo.com";
+  const demoPassword = "SecureFarmer2024!";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (isLogin) {
       // Demo login validation
-      if (phone === demoPhone && password === demoPassword) {
+      if (email === demoEmail && password === demoPassword) {
         toast.success("Welcome to Shamba Connect Portal!", {
           duration: 2000,
         });
@@ -32,7 +32,7 @@ const FarmerAuth = () => {
           navigate("/farmer-dashboard");
         }, 1500);
       } else {
-        toast.error("Login Failed - Demo credentials: Phone: 0712345678, Password: farmer123", {
+        toast.error("Login Failed - Demo credentials: Email: farmer@demo.com, Password: SecureFarmer2024!", {
           duration: 4000,
         });
       }
@@ -82,13 +82,13 @@ const FarmerAuth = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="email">Email Address</Label>
                 <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="0712345678"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  id="email"
+                  type="email"
+                  placeholder="farmer@demo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -98,7 +98,7 @@ const FarmerAuth = () => {
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="SecureFarmer2024!"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -141,8 +141,8 @@ const FarmerAuth = () => {
               <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-gray-500 text-center">
                   <strong>Demo Credentials:</strong><br />
-                  Phone: 0712345678<br />
-                  Password: farmer123
+                  Email: farmer@demo.com<br />
+                  Password: SecureFarmer2024!
                 </p>
               </div>
             )}
